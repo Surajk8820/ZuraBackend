@@ -4,7 +4,7 @@ const userController = Router();
 
 // to fetch user's profile by email
 userController.get("/", async (req, res) => {
-  let { email } = req.body;
+  let { email } = req?.headers?.email;
   try {
     let profiles = await UserModel.findOne({ email: email });
     console.log(profiles);
