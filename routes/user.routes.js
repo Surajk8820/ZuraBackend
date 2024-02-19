@@ -4,10 +4,9 @@ const userController = Router();
 
 // to fetch user's profile by email
 userController.get("/", async (req, res) => {
-  let { email } = req?.headers;
+  let {smartwallet}  = req?.headers;
   try {
-    let profiles = await UserModel.findOne({ email: email });
-    console.log(profiles);
+    let profiles = await UserModel.findOne({smartWallet : smartwallet});
     res.status(200).send(profiles);
   } catch {
     console.log("error while fetching");
